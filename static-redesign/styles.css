@@ -1,0 +1,264 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+/* general */
+
+@font-face {
+  font-family: "Pacifico";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(pacifico.woff2) format('woff2');
+}
+
+:root {
+	--color-text: #282c37;
+	--color-background: #eff3f5;
+	--color-box: white;
+	--color-border: #c0cdd9;
+	--color-twitter: #1d9bf0;
+	--color-mastodon: #6d6eff;
+	--color-accent: var(--color-mastodon);
+	--color-disabled: var(--color-border);
+	--gradient-twitodon: linear-gradient(90deg, var(--color-twitter) 0%, var(--color-mastodon) 100%);
+		accent-color: var(--color-accent)
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  color: var(--color-text);
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+}
+
+header,
+main,
+footer {
+  width: 40rem;
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* header */
+
+header {
+  text-align: center;
+}
+
+h1 {
+  font-family: Pacifico, sans-serif;
+  font-size: 4rem;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+h1, h2 {
+  background: var(--gradient-twitodon);
+  background-clip: text;
+  color: transparent;
+}
+
+a {
+	color: var(--color-text);
+	text-decoration: underline;
+}
+
+a:focus,
+a:hover {
+	text-decoration: none;
+}
+
+button,
+input[type="submit"],
+.button {
+  background: var(--color-accent);
+  color: white;
+  outline: 1px solid white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+
+button.secondary,
+input[type="submit"].secondary,
+.button.secondary {
+  background: transparent;
+  color: var(--color-accent);
+  outline-color: 1px solid var(--color-accent);
+  font-size: 0.9rem;
+  padding: 0.3rem;
+}
+
+button:focus,
+input[type="submit"]:focus,
+.button:focus,
+button:hover,
+input[type="submit"]:hover,
+.button:hover {
+  filter: brightness(1.1);
+  outline-width: 2px;
+}
+
+button:disabled,
+input[type="submit"]:disabled,
+.button:disabled {
+  background: var(--color-disabled);
+  cursor: not-allowed;
+}
+
+details {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+details summary {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+details summary:focus,
+details summary:hover {
+}
+
+/* steps */
+
+ol#steps {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+}
+
+ol#steps > li {
+  background: var(--color-box);
+  border: none;
+  outline: 1px solid transparent;
+  border-radius: 4px;
+  padding: 1rem;
+  padding-left: 5rem;
+  margin: 0;
+  list-style-position: inside;
+  list-style-type: none;
+  position: relative;
+}
+
+ol#steps > li.inactive {
+  opacity: .5;
+  pointer-events: none;
+}
+
+ol#steps > li:before {
+  font-size: 2rem;
+  line-height: 2rem;
+  width: 4rem;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  margin-top: -1rem;
+  /*color: var(--color-accent);*/
+}
+
+/* intro */
+
+.intro p:first-of-type {
+  font-weight: bold;
+}
+
+.intro p:not(:first-of-type) {
+  font-size: 0.9rem;
+}
+
+.intro {
+  margin-bottom: 2rem;
+}
+
+/* step 1 */
+
+li#stepTwitter {
+  --color-accent: var(--color-twitter);
+}
+
+li#stepTwitter:before {
+  content: '1';
+}
+
+/* step 2 */
+
+li#stepMastodon {
+  --color-accent: var(--color-mastodon);
+}
+
+li#stepMastodon:before {
+  content: '2';
+}
+
+li#stepMastodon form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+/* step 3 */
+
+li#stepFind {
+  --color-accent: var(--gradient-twitodon);
+}
+
+li#stepFind:before {
+  content: '3';
+}
+
+progress {
+  appearance: none;
+  width: 100%;
+  border: 0;
+  background: var(--color-border);
+  border-radius: 4px;
+  height: 1rem;
+}
+
+::-moz-progress-bar {
+  background: var(--color-accent);
+}
+
+::-webkit-progress-bar {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-progress-value {
+  background: var(--color-accent);
+  border-radius: 4px 0 0 4px;
+}
+
+details ol {
+  list-style-position: outside;
+}
+
+details ol li {
+  margin-bottom: 0.5em;
+}
+
+/* footer */
+
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+}

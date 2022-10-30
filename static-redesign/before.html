@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="styles.css" rel="stylesheet">
+    <title>Twitodon – Find your Twitter friends on Mastodon</title>
+    <style>
+      /* For static demo only */
+      #twitterLoggedIn, #mastodonLoggedIn, #findDuring, #findAfter { display: none; }
+    </style>
+  </head>
+
+  <body>
+
+    <header>
+      <h1>Twitodon</h1>
+      <h2>Find your Twitter friends on Mastodon</h2>
+      <iframe src="https://github.com/sponsors/diddledani/button" title="Sponsor diddledani" height="35" width="116" style="border: 0;"></iframe>
+    </header>
+
+    <main>
+      <div class='intro'>
+        <p>Use Twitodon to find Twitter users you follow that are on Mastodon and have previously used Twitodon too, and to help your Twitter followers find you on Mastodon.<p>
+        <p>When you login to Twitodon with both your Twitter and Mastodon accounts, it memorises the association between your two accounts. Twitodon will then match any Twitter users you follow that have previously logged into Twitodon. Since there is no way of discovering or guessing Twitter users on Mastodon without them logging into Twitodon previously, it is recommended to check back again regularly to keep up to date as more users use Twitodon.</p>
+      </div>
+
+      <ol id='steps'>
+
+        <li id='stepTwitter' class=''>
+          <div id="twitterLoggedOut">
+            <button id="twitterLogin">Login with Twitter</button>
+          </div>
+          <div id="twitterLoggedIn">
+            <p>✅ Logged-in on Twitter as <strong>@handle</strong></p>
+            <button id="twitterLogout" class="secondary">Logout and revoke access</button>
+            <details>
+              <summary>How to revoke access</summary>
+              <p>To revoke access to Twitter, use the button above. Your login session has a time limit though, so the buttons will not appear until you refresh your session by logging in again. When visible, clicking the button will completely dissociate Twitodon from your Twitter account.</p>
+            </details>
+          </div>
+        </li>
+ 
+        <li id='stepMastodon' class=''>
+          <div id="mastodonLoggedOut">
+            <form method="get" id="mastodonForm">
+              <label for="mastodonHostField">Enter your Mastodon server address:</label>
+              <input id="mastodonHostField" type="url" placeholder="https://mastodon.social/" />
+              <input id="loginToMastodon" type="submit" value="Login with Mastodon" disabled />
+            </form>
+            <details>
+              <summary>Where to find your server address</summary>
+              <p>When you joined Mastodon, you signed-up to a specific server (also called “instance”). This server has an URL, such as “mastodon.social”, “mastodon.cloud” or “mastodon.online”, which you should paste here so that you can log-in. You can find it in the adress bar of your browser when visiting Mastodon, or at the end of your user handle, which takes the form “@username@address”.</p>
+            </details>
+          </div>
+          <div id="mastodonLoggedIn">
+            <p>✅ Logged-in on Twitter as <strong>@handle@server</strong></p>
+            <button id="mastodonLogout" class="secondary">Logout</button>
+            <details>
+              <summary>How to revoke access</summary>
+              <p>Unfortunately Mastodon doesn't provide Twitodon the ability to revoke access directly from here, but you can still logout. To completely revoke access you need to navigate to <a href="INSTANCE-URL/oauth/authorized_applications" target="_blank">your “Authorized apps” in “Account settings” on Mastodon</a>, find the Twitodon app and click “Revoke”.</p>
+            </details>
+          </div>
+        </li>       
+
+        <li id='stepFind' class='inactive'>
+          <div id="findBefore">
+            <p>Find people</p>
+          </div>
+          <div id="findDuring">
+            <p>Looking for Mastodon users…
+            <p>Scanned <strong id="scanProgressCount">45</strong> of <strong id="twitterFollowingCount">123</strong> users you follow on Twitter.<p>
+            <progress value="45" max="123"><span id="scanProgressCount"></progress> 
+            <p>Discovered <strong id="matchedMastodonUsers">12</strong> Twitter users on Mastodon who have previously linked their Twitter and Mastodon accounts with Twitodon.</p>
+          </div>
+          <div id="findAfter">
+            <p>✅ Done!</p>
+            <p>Discovered <strong id="finalMatchedMastodonUsers">34</strong> Twitter users on Mastodon who have previously linked their Twitter and Mastodon accounts with Twitodon.</p>
+            <p>Download the CSV file and <a href="INSTANCE-URL/settings/import" target="_blank">import it into your Mastodon account</a>:</p>
+            <a class='button' id="csvLink" href="/downloadFollowableCSV">Download users as a CSV file</a>
+            <details>
+              <summary>How to import the CSV file into your Mastodon account</summary>
+              <ol>
+                <li>Navigate to <a href="INSTANCE-URL/settings/import" target="_blank">your Mastodon account’s import page</a> in “Settings”, “Import and Export”, “Import”.</li>
+                <li>Make sure that “Following list” is selected as an import type.</li>
+                <li>Click the “Browse” button and select the file “new_mastodon_follows.csv” that you downloaded from Twitodon.</li>
+                <li>Ensure that “Merge” is selected, or you’ll unfollow anyone that isn’t in your CSV file.</li>
+                <li>Finally click the “Upload” button. This will uploadd your CSV and put it into a queue. Your Mastodon server will process it over the next few hours or days.</li>
+              </ol>
+            </details>
+          </div>
+        </li>
+
+      </ol>
+    </main>
+
+    <footer>
+      <p>Important information about how your data is handled is available in the <a href="privacy.html">Privacy Policy</a>.</p>
+      <p>Report issues and contribute <a href="https://github.com/diddledani/twitodon">on GitHub</a>.</p>
+    </footer>
+
+  </body>
+</html>
