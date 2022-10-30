@@ -11,16 +11,16 @@
 }
 
 :root {
-	--color-text: #282c37;
-	--color-background: #eff3f5;
-	--color-box: white;
-	--color-border: #c0cdd9;
-	--color-twitter: #1d9bf0;
-	--color-mastodon: #6d6eff;
-	--color-accent: var(--color-mastodon);
-	--color-disabled: var(--color-border);
-	--gradient-twitodon: linear-gradient(90deg, var(--color-twitter) 0%, var(--color-mastodon) 100%);
-		accent-color: var(--color-accent)
+  --color-text: #282c37;
+  --color-background: #eff3f5;
+  --color-box: white;
+  --color-border: #c0cdd9;
+  --color-twitter: #1d9bf0;
+  --color-mastodon: #6d6eff;
+  --color-accent: var(--color-mastodon);
+  --color-disabled: var(--color-border);
+  --gradient-twitodon: linear-gradient(90deg, var(--color-twitter) 0%, var(--color-mastodon) 100%);
+  accent-color: var(--color-accent)
 }
 
 * {
@@ -148,7 +148,7 @@ ol#steps {
 ol#steps > li {
   background: var(--color-box);
   border: none;
-  outline: 1px solid transparent;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   padding: 1rem;
   padding-left: 5rem;
